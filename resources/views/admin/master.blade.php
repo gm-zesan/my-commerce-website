@@ -23,6 +23,11 @@
         rel="stylesheet">
     <link href="{{ asset('/admin') }}/assets/node_modules/datatables.net-bs4/css/responsive.dataTables.min.css"
         rel="stylesheet">
+
+    {{-- summernote --}}
+    <link href="{{ asset('/admin') }}/assets/node_modules/summernote/dist/summernote-bs4.css" rel="stylesheet"
+        type="text/css">
+
     <!-- Custom CSS -->
     <link href="{{ asset('/admin') }}/dist/css/style.min.css" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
@@ -98,6 +103,9 @@
     <script src="{{ asset('/admin') }}/dist/js/dashboard1.js"></script>
     {{-- <script src="{{ asset('/admin') }}/assets/node_modules/toast-master/js/jquery.toast.js"></script> --}}
     <script src="{{ asset('/admin') }}/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
+
+
+    <script src="{{ asset('/admin') }}/assets/node_modules/summernote/dist/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function() {
             // Basic
@@ -199,6 +207,47 @@
             $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass(
                 'btn btn-primary me-1');
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.summernote').summernote({
+                height: 350, // set editor height
+                minHeight: null, // set minimum height of editor
+                maxHeight: null, // set maximum height of editor
+                focus: false // set focus to editable area after initializing summernote
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function() {
+            $(document).on('change', '#categoryId', function() {
+                var categoryId = $(this).val();
+                $.ajax({
+                    type: 'GET',
+                    url: "{{ route('product.get-subCategory-by-category') }}",
+                    data: {
+                        id: categoryId
+                    },
+                    dataType: 'JSON',
+                    success: function(response) {
+                        var option = '';
+                        option +=
+                            '<option value="" disabled selected> -- Select Sub Category -- </option>';
+                        $.each(response, function(key, value) {
+                            option += '<option value="' + value.id + '">' + value.name +
+                                '</option>';
+                        });
+                        var subCategoryId = $('#subCategoryId');
+                        subCategoryId.empty();
+                        subCategoryId.append(option);
+                    }
+
+                });
+            })
+        })
     </script>
 </body>
 

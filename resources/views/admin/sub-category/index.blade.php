@@ -32,13 +32,13 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="" name="name"
-                                    placeholder="Category Name">
+                                    placeholder="Sub Category Name">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 control-label">Sub Category Description</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="" name="description" placeholder="Category description" rows="5"></textarea>
+                                <textarea class="form-control" id="" name="description" placeholder="Sub Category description" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">

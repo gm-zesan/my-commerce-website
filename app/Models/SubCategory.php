@@ -11,6 +11,14 @@ class SubCategory extends Model
 
     private static $subCategory, $image, $imageName, $directory, $imageUrl;
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'description',
+        'image',
+        'status',
+    ];
+    
     public static function getImageUrl($request){
         self::$image = $request->file('image');
         self::$imageName = self::$image->getClientOriginalName();

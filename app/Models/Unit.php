@@ -11,6 +11,14 @@ class Unit extends Model
     private static $unit;
 
 
+    protected $fillable = [
+        'name',
+        'code',
+        'description',
+        'status',
+    ];
+
+
 
     public static function newUnit($request){
         self::$unit = new Unit();
