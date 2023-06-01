@@ -203,21 +203,21 @@
                     <div class="mega-category-menu">
                         <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
                         <ul class="sub-category">
-                            <li><a href="product-grids.html">Electronics <i class="lni lni-chevron-right"></i></a>
-                                <ul class="inner-sub-category">
-                                    <li><a href="product-grids.html">Digital Cameras</a></li>
-                                    <li><a href="product-grids.html">Camcorders</a></li>
-                                    <li><a href="product-grids.html">Camera Drones</a></li>
-                                    <li><a href="product-grids.html">Smart Watches</a></li>
-                                    <li><a href="product-grids.html">Headphones</a></li>
-                                    <li><a href="product-grids.html">MP3 Players</a></li>
-                                    <li><a href="product-grids.html">Microphones</a></li>
-                                    <li><a href="product-grids.html">Chargers</a></li>
-                                    <li><a href="product-grids.html">Batteries</a></li>
-                                    <li><a href="product-grids.html">Cables & Adapters</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ route('product-category') }}">accessories</a></li>
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a href="{{ route('product-category') }}">{{ $category->name }}
+                                        @if (count($category->subCategories) > 0)
+                                            <i class="lni lni-chevron-right"></i>
+                                        @endif
+                                    </a>
+                                    <ul class="inner-sub-category">
+                                        @foreach ($category->subCategories as $subCategory)
+                                            <li><a href="product-grids.html">{{ $subCategory->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 

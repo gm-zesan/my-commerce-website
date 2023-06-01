@@ -55,8 +55,11 @@ class ProductController extends Controller
         }
         return redirect('/product/manage')->with('message','Product info update successfully');
     }
+
+
     public function delete($id){
         Product::deletedProduct($id);
+        OtherImage::deletedOtherImage($id);
         return redirect('/product/manage')->with('message','Product delete successfully');
     }
 
