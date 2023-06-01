@@ -205,7 +205,7 @@
                         <ul class="sub-category">
                             @foreach ($categories as $category)
                                 <li>
-                                    <a href="{{ route('product-category') }}">{{ $category->name }}
+                                    <a href="{{ route('product-category',['id'=>$category->id]) }}">{{ $category->name }}
                                         @if (count($category->subCategories) > 0)
                                             <i class="lni lni-chevron-right"></i>
                                         @endif

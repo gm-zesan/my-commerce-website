@@ -14,8 +14,8 @@ class MyCommerceController extends Controller
             'products'=>Product::orderBy('id','desc')->take(8)->get(),
         ]);
     }
-    public function category(){
-        return view('website.category.index');
+    public function category($id){
+        return view('website.category.index',['products'=>Product::where('category_id',$id)->orderBy('id','desc')->get()]);
     }
     public function detail(){
         return view('website.detail.index');
