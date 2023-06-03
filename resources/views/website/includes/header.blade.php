@@ -205,12 +205,12 @@
                         <ul class="sub-category">
                             @foreach ($categories as $category)
                                 <li>
-                                    <a href="{{ route('product-category',['id'=>$category->id]) }}">{{ $category->name }}
+                                    <a href="{{ route('product-category', ['id' => $category->id]) }}">{{ $category->name }}
                                         @if (count($category->subCategories) > 0)
                                             <i class="lni lni-chevron-right"></i>
                                         @endif
                                     </a>
-                                    <ul class="inner-sub-category">
+                                    <ul class="{{ count($category->subCategories) > 0 ? 'inner-sub-category' : '' }}">
                                         @foreach ($category->subCategories as $subCategory)
                                             <li><a href="product-grids.html">{{ $subCategory->name }}</a>
                                             </li>
