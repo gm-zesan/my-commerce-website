@@ -64,12 +64,13 @@
                             <h3 class="price">{{ $product->selling_price }}<span>{{ $product->regular_price }}</span></h3>
                             <p class="info-text">{{ $product->short_description }}</p>
 
-                            <form action="" method="POST">
+                            <form action="{{ route('add-to-cart', ['id' => $product->id]) }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group quantity">
-                                            <input type="number" class="form-control" value="1" min="1">
+                                            <input type="number" name="qty" class="form-control" value="1"
+                                                min="1">
                                         </div>
                                     </div>
                                 </div>

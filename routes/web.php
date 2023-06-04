@@ -30,7 +30,10 @@ Route::get('/product-detail/{id}', [MyCommerceController::class, 'detail'])->nam
 
 
 
-Route::get('/show-cart', [CartController::class, 'index'])->name('show-cart');
+Route::get('/show-cart', [CartController::class, 'show'])->name('show-cart');
+Route::post('/add-to-cart/{id}', [CartController::class, 'index'])->name('add-to-cart');
+Route::post('/update-cart-product/{id}', [CartController::class, 'update'])->name('update-cart-product');
+Route::get('/remove-cart-product/{id}', [CartController::class, 'remove'])->name('remove-cart-product');
 
 
 
