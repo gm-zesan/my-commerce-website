@@ -15,6 +15,8 @@ class CartController extends Controller
         ShoppingCart::add($this->product->$id,$this->product->name,$request->qty,$this->product->selling_price,['image'=>$this->product->image, 'category'=>$this->product->category->name, 'brand'=>$this->product->brand->name]);
         return redirect('/show-cart');
     }
+
+    
     public function show(){
         return view('website.cart.index',['cart_products'=>ShoppingCart::all()]);
     }

@@ -30,7 +30,19 @@
             <div class="top-area">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
-                        <div class="product-images">
+                        <div class="xzoom-container">
+                            <img class="xzoom" id="xzoom-default" src="{{ asset($product->image) }}"
+                                xoriginal="{{ asset($product->image) }}" />
+                            <div class="xzoom-thumbs">
+                                @foreach ($product->otherImages as $otherImages)
+                                    <a href="{{ asset($otherImages->image) }}">
+                                        <img class="xzoom-gallery" width="80" src="{{ asset($otherImages->image) }}"
+                                            xpreview="{{ asset($otherImages->image) }}" title="The description goes here" />
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        {{-- <div class="product-images">
                             <main id="gallery">
                                 <div class="main-img">
                                     <img src="{{ asset($product->image) }}" id="current" alt="#">
@@ -41,7 +53,8 @@
                                     @endforeach
                                 </div>
                             </main>
-                        </div>
+                        </div> --}}
+
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
@@ -61,7 +74,8 @@
                                 <a href="javascript:void(0)">{{ $product->brand->name }}</a>
                                 </a>
                             </p>
-                            <h3 class="price">{{ $product->selling_price }}<span>{{ $product->regular_price }}</span></h3>
+                            <h3 class="price">{{ $product->selling_price }}<span>{{ $product->regular_price }}</span>
+                            </h3>
                             <p class="info-text">{{ $product->short_description }}</p>
 
                             <form action="{{ route('add-to-cart', ['id' => $product->id]) }}" method="POST">
