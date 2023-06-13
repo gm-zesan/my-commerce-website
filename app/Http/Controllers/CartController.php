@@ -12,7 +12,7 @@ class CartController extends Controller
     
     public function index(Request $request,$id){
         $this->product = Product::find($id);
-        ShoppingCart::add($this->product->$id,$this->product->name,$request->qty,$this->product->selling_price,['image'=>$this->product->image, 'category'=>$this->product->category->name, 'brand'=>$this->product->brand->name]);
+        ShoppingCart::add($this->product->id,$this->product->name,$request->qty,$this->product->selling_price,['image'=>$this->product->image, 'category'=>$this->product->category->name, 'brand'=>$this->product->brand->name]);
         return redirect('/show-cart');
     }
 

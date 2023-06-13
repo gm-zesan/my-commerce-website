@@ -38,7 +38,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="cash">
-                                <form action="" method="POST">
+                                <form action="{{ route('new-cash-order') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
@@ -80,7 +80,8 @@
                                             <div class="single-form form-default">
                                                 <label>Payment Method</label>
                                                 <div class="">
-                                                    <label><input type="radio" name="payment_type" checked> Cash On
+                                                    <label><input type="radio" name="payment_type" value="1" checked>
+                                                        Cash On
                                                         Delivery</label>
                                                 </div>
                                             </div>
@@ -131,7 +132,7 @@
                                 </div>
                                 <div class="payable-price">
                                     <p class="value">Tax(15%):</p>
-                                    <p class="price">{{ $tax = ($total * 15) / 100 }}</p>
+                                    <p class="price">{{ $tax = round(($total * 15) / 100) }}</p>
                                 </div>
                                 <div class="payable-price">
                                     <p class="value">Shipping :</p>
@@ -141,8 +142,13 @@
                             <div class="total-payable">
                                 <div class="payable-price">
                                     <p class="value">Total:</p>
-                                    <p class="price">{{ $total + $tax + $shipping }}</p>
+                                    <p class="price">{{ $orderTotal = $total + $tax + $shipping }}</p>
                                 </div>
+                                <?php
+                                Session::put('order_total', $orderTotal);
+                                Session::put('tax_total', $tax);
+                                Session::put('shipping_total', $shipping);
+                                ?>
                             </div>
                             <div class="price-table-btn button">
                                 <a href="javascript:void(0)" class="btn btn-alt">Checkout</a>

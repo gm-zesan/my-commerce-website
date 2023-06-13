@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('order_total',10,2);
             $table->float('tax_total',10,2);
             $table->float('shipping_total',10,2);
-            $table->string('order_status');
+            $table->string('order_status')->default('pending');;
             $table->text('delivery_address');
             $table->string('delivery_status')->default('pending');
             $table->string('payment_type');
