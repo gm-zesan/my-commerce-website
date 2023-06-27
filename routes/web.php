@@ -4,6 +4,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\CustomerOrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyCommerceController;
 use App\Http\Controllers\ProductController;
@@ -40,6 +42,19 @@ Route::get('/remove-cart-product/{id}', [CartController::class, 'remove'])->name
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::post('/new-cash-order', [CheckoutController::class, 'newCashOrder'])->name('new-cash-order');
 Route::get('/complete-order', [CheckoutController::class, 'completeOrder'])->name('complete-order');
+
+
+
+
+Route::get('/customer-login', [CustomerAuthController::class, 'index'])->name('customer.login');
+Route::post('/customer-login', [CustomerAuthController::class, 'login'])->name('customer.login');
+Route::get('/customer-register', [CustomerAuthController::class, 'register'])->name('customer.register');
+Route::get('/customer-logout', [CustomerAuthController::class, 'logout'])->name('customer.logout');
+Route::get('/customer-dashboard', [CustomerAuthController::class, 'dashboard'])->name('customer.dashboard');
+Route::get('/customer-profile', [CustomerAuthController::class, 'profile'])->name('customer.profile');
+Route::get('/customer-account', [CustomerAuthController::class, 'account'])->name('customer.account');
+Route::get('/customer-order', [CustomerOrderController::class, 'allOrder'])->name('customer.order');
+
 
 
 
