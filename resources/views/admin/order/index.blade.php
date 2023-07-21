@@ -32,23 +32,23 @@
                                         <td>{{ $order->order_status }}</td>
                                         <td>{{ $order->payment_status }}</td>
                                         <td>
-                                            <a href="{{ route('category.edit', ['id' => $order->id]) }}"
+                                            <a href="{{ route('admin.order-detail', ['id' => $order->id]) }}"
                                                 class="btn btn-info btn-sm" title="Order Detail">
                                                 <i class="ti-eye"></i>
                                             </a>
-                                            <a href="{{ route('category.edit', ['id' => $order->id]) }}"
+                                            <a href="{{ route('admin.order-edit', ['id' => $order->id]) }}"
                                                 class="btn btn-success btn-sm" title="Order Edit">
                                                 <i class="ti-pencil-alt"></i>
                                             </a>
-                                            <a href="{{ route('category.edit', ['id' => $order->id]) }}"
+                                            <a href="{{ route('admin.order-invoice', ['id' => $order->id]) }}"
                                                 class="btn btn-primary btn-sm" title="View Invoice">
                                                 <i class="ti-info-alt"></i>
                                             </a>
-                                            <a href="{{ route('category.edit', ['id' => $order->id]) }}"
+                                            <a href="{{ route('admin.print-invoice', ['id' => $order->id]) }}"
                                                 class="btn btn-success btn-sm" title="Print Invoice">
                                                 <i class="ti-save"></i>
                                             </a>
-                                            <a href="{{ route('category.delete', ['id' => $order->id]) }}"
+                                            <a href="{{ route('admin.order-delete', ['id' => $order->id]) }}"
                                                 class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Are you sure to delete this?');">
                                                 <i class="ti-trash"></i>
